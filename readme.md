@@ -9,11 +9,11 @@
 
 ## Scenario
 
-When a [Non\-Persistent Object](https://docs.devexpress.com/eXpressAppFramework/116516/concepts/business-model-design/non-persistent-objects?v=20.1) contains a collection of persistent business objects, we want to edit linked objects right in the list view in in-place mode or in ListViewAndDetailView mode. Also, when a linked persistent object is edited in a popup detail view, we want to see changes in the source list view after they are saved.
+When a [Non\-Persistent Object](https://docs.devexpress.com/eXpressAppFramework/116516/concepts/business-model-design/non-persistent-objects?v=20.1) contains a collection of persistent business objects, we want to edit linked objects right in the list view either in in-place mode or in ListViewAndDetailView mode. Also, when a linked persistent object is edited in a popup detail view, we want to see changes in the source list view after they are saved.
 
 ## Solution
 
-[NonPersistentObjectSpace](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.NonPersistentObjectSpace) created for the master object cannot handle linked persistent objects by default. To work with them, create a persistent object space and add it to the [AdditionalObjectSpaces](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.NonPersistentObjectSpace.AdditionalObjectSpaces) collection. Set [NonPersistentObjectSpace\.AutoDisposeAdditionalObjectSpaces](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.NonPersistentObjectSpace.AutoDisposeAdditionalObjectSpaces?v=20.1) to *true* to automatically dispose of additional object spaces when the master is disposed. 
+The [NonPersistentObjectSpace](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.NonPersistentObjectSpace) created for the master object cannot handle linked persistent objects by default. To work with them, create a persistent object space and add it to the [AdditionalObjectSpaces](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.NonPersistentObjectSpace.AdditionalObjectSpaces) collection. Set [NonPersistentObjectSpace\.AutoDisposeAdditionalObjectSpaces](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.NonPersistentObjectSpace.AutoDisposeAdditionalObjectSpaces?v=20.1) to *true* to automatically dispose of additional object spaces when the master is disposed. 
 
 To automatically commit changes made to linked persistent objects, set **NonPersistentObjectSpace.AutoCommitAdditionalObjectSpaces** to *true*.
 
