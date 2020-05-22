@@ -144,6 +144,7 @@
     <Compile Include="Controllers\NonPersistentObjectActivatorController.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controllers\ProductViewNestedCollectionController.cs" />
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="Module.cs">
       <SubType>Component</SubType>
