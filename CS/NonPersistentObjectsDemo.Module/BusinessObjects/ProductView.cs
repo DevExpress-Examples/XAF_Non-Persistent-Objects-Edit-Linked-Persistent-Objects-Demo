@@ -63,7 +63,7 @@ namespace NonPersistentObjectsDemo.Module.BusinessObjects {
             objectSpace.Reloaded += ObjectSpace_Reloaded;
             objectSpace.ModifiedChanging += ObjectSpace_ModifiedChanging;
         }
-        private void ObjectSpace_ModifiedChanging(object sender, CancelObjectChangedEventArgs e) {
+        private void ObjectSpace_ModifiedChanging(object sender, ObjectSpaceModificationEventArgs e) {
             if(e.MemberInfo!= null) {
                 if(e.MemberInfo.Owner.Type == typeof(ProductView) && e.MemberInfo.Name == nameof(ProductView.Category)) {
                     e.Cancel = true;
