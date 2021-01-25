@@ -41,8 +41,10 @@ namespace NonPersistentObjectsDemo.Module {
         private void Application_ObjectSpaceCreated(object sender, ObjectSpaceCreatedEventArgs e) {
             var npos = e.ObjectSpace as NonPersistentObjectSpace;
             if(npos != null) {
-                IObjectSpace persistentObjectSpace = Application.CreateObjectSpace(typeof(BaseObject));
-                npos.AdditionalObjectSpaces.Add(persistentObjectSpace);
+                if(!npos.AdditionalObjectSpaces.Any(os => os.IsKnownType(typeof(BaseObject)))) {
+                    IObjectSpace persistentObjectSpace = Application.CreateObjectSpace(typeof(BaseObject));
+                    npos.AdditionalObjectSpaces.Add(persistentObjectSpace);
+                }
                 npos.AutoDisposeAdditionalObjectSpaces = true;
                 npos.AutoRefreshAdditionalObjectSpaces = true;
                 npos.AutoCommitAdditionalObjectSpaces = true;
