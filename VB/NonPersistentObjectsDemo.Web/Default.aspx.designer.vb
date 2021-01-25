@@ -18,7 +18,7 @@ Partial Public Class [Default]
 	''' Auto-generated field.
 	''' To modify move field declaration from designer file to code-behind file.
 	''' </remarks>
-	Protected form2 As Global.System.Web.UI.HtmlControls.HtmlForm
+	Protected form2 As System.Web.UI.HtmlControls.HtmlForm
 
 	''' <summary>
 	''' ProgressControl control.
@@ -36,5 +36,5 @@ Partial Public Class [Default]
 	''' Auto-generated field.
 	''' To modify move field declaration from designer file to code-behind file.
 	''' </remarks>
-	Protected Content As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+	Protected Content As System.Web.UI.HtmlControls.HtmlGenericControl
 End Class

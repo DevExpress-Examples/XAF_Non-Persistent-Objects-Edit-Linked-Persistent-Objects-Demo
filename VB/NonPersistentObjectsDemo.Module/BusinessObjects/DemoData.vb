@@ -9,9 +9,8 @@ Namespace NonPersistentObjectsDemo.Module.BusinessObjects
 
 	Friend Class DemoDataCreator
 		Private ObjectSpace As IObjectSpace
-'INSTANT VB NOTE: The variable objectSpace was renamed since Visual Basic does not handle local variables named the same as class members well:
-		Public Sub New(ByVal objectSpace_Conflict As IObjectSpace)
-			Me.ObjectSpace = objectSpace_Conflict
+		Public Sub New(ByVal objectSpace As IObjectSpace)
+			Me.ObjectSpace = objectSpace
 		End Sub
 		Public Sub CreateDemoObjects()
 			Dim rnd = New Random()

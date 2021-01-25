@@ -43,8 +43,10 @@ Namespace NonPersistentObjectsDemo.Module
 		Private Sub Application_ObjectSpaceCreated(ByVal sender As Object, ByVal e As ObjectSpaceCreatedEventArgs)
 			Dim npos = TryCast(e.ObjectSpace, NonPersistentObjectSpace)
 			If npos IsNot Nothing Then
-				Dim persistentObjectSpace As IObjectSpace = Application.CreateObjectSpace(GetType(BaseObject))
-				npos.AdditionalObjectSpaces.Add(persistentObjectSpace)
+				If Not npos.AdditionalObjectSpaces.Any(Function(os) os.IsKnownType(GetType(BaseObject))) Then
+					Dim persistentObjectSpace As IObjectSpace = Application.CreateObjectSpace(GetType(BaseObject))
+					npos.AdditionalObjectSpaces.Add(persistentObjectSpace)
+				End If
 				npos.AutoDisposeAdditionalObjectSpaces = True
 				npos.AutoRefreshAdditionalObjectSpaces = True
 				npos.AutoCommitAdditionalObjectSpaces = True
