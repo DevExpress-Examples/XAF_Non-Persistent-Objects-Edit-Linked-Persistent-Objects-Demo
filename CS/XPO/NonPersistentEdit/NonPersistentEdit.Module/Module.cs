@@ -12,6 +12,7 @@ using DevExpress.ExpressApp.Model.DomainLogics;
 using DevExpress.ExpressApp.Model.NodeGenerators;
 using DevExpress.Xpo;
 using DevExpress.ExpressApp.Xpo;
+using NonPersistentObjectsDemo.Module.BusinessObjects;
 
 namespace NonPersistentEdit.Module;
 
@@ -30,7 +31,25 @@ public sealed class NonPersistentEditModule : ModuleBase {
     }
     public override void Setup(XafApplication application) {
         base.Setup(application);
+        application.SetupComplete += Application_SetupComplete;
         // Manage various aspects of the application UI and behavior at the module level.
+    }
+    private void Application_SetupComplete(object sender, EventArgs e) {
+        Application.ObjectSpaceCreated += Application_ObjectSpaceCreated;
+        NonPersistentObjectSpace.UseKeyComparisonToDetermineIdentity = true;
+    }
+    private void Application_ObjectSpaceCreated(object sender, ObjectSpaceCreatedEventArgs e) {
+        var npos = e.ObjectSpace as NonPersistentObjectSpace;
+        if(npos != null) {
+            if(!npos.AdditionalObjectSpaces.Any(os => os.IsKnownType(typeof(BaseObject)))) {
+                IObjectSpace persistentObjectSpace = Application.CreateObjectSpace(typeof(BaseObject));
+                npos.AdditionalObjectSpaces.Add(persistentObjectSpace);
+            }
+            npos.AutoDisposeAdditionalObjectSpaces = true;
+            npos.AutoRefreshAdditionalObjectSpaces = true;
+            npos.AutoCommitAdditionalObjectSpaces = true;
+            new ProductViewAdapter(npos);
+        }
     }
     public override void CustomizeTypesInfo(ITypesInfo typesInfo) {
         base.CustomizeTypesInfo(typesInfo);

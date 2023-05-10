@@ -1,5 +1,19 @@
-﻿<?xml version="1.0" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Application Title="NonPersistentEdit">
+  <NavigationItems>
+    <Items>
+      <Item Id="Default">
+        <Items>
+          <Item Id="ProductView_ListView" ViewId="ProductView_DetailView" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
+  <SchemaModules>
+    <SchemaModule Name="SystemModule" Version="22.2.6.0" IsNewNode="True" />
+  </SchemaModules>
   <Views>
+    <ListView Id="ProductView_AllProducts_ListView" MasterDetailMode="ListViewAndDetailView" />
+    <ListView Id="ProductView_Products_ListView" AllowEdit="True" />
   </Views>
 </Application>
