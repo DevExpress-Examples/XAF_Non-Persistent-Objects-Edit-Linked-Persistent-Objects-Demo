@@ -3,21 +3,18 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
 
+# XAF - How to edit a collection of persistent objects linked to a non-persistent object
 
-# How to edit a collection of Persistent Objects linked to a Non-Persistent Object
+When a [non\-persistent object](https://docs.devexpress.com/eXpressAppFramework/116516/concepts/business-model-design/non-persistent-objects) contains a collection of persistent business objects, you may need to edit linked objects right in the list view either in in-place or in `ListViewAndDetailView` mode. Also, if a linked persistent object is edited in a popup detail view, you may need to see changes in the source list view after they are saved.
 
-
-When a [Non\-Persistent Object](https://docs.devexpress.com/eXpressAppFramework/116516/concepts/business-model-design/non-persistent-objects) contains a collection of persistent business objects, we want to edit linked objects right in the list view either in in-place mode or in ListViewAndDetailView mode. Also, when a linked persistent object is edited in a popup detail view, we want to see changes in the source list view after they are saved.
+This example demonstrates how you can perform these tasks in XAF applications.
 
 ## Implementation Details
 
-The [NonPersistentObjectSpace](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.NonPersistentObjectSpace) created for the master object cannot handle linked persistent objects by default. To work with them, create a persistent object space and add it to the [AdditionalObjectSpaces](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.NonPersistentObjectSpace.AdditionalObjectSpaces) collection. Set [NonPersistentObjectSpace\.AutoDisposeAdditionalObjectSpaces](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.NonPersistentObjectSpace.AutoDisposeAdditionalObjectSpaces) to *true* to automatically dispose of additional object spaces when the master is disposed. 
-
-To automatically commit changes made to linked persistent objects, set [NonPersistentObjectSpace\.AutoCommitAdditionalObjectSpaces](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.NonPersistentObjectSpace.AutoCommitAdditionalObjectSpaces) to *true*.
-
-To refresh linked persistent objects when the non-persistent object view is refreshed, set [NonPersistentObjectSpace\.AutoRefreshAdditionalObjectSpaces](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.NonPersistentObjectSpace.AutoRefreshAdditionalObjectSpaces) to *true* and subscribe to the [ObjectGetting](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.NonPersistentObjectSpace.ObjectGetting) event. In the event handler, create a new non-persistent object instance and get fresh copies of linked persistent objects.
-
-The Category property in this example is used to filter the nested list view of persistent objects. To avoid modifying the object space when this property is changed, subscribe to the [BaseObjectSpace.ModifiedChanging](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.BaseObjectSpace.ModifiedChanging) event and set the *e.Cancel* parameter to *true* depending on other event arguments.
+1. The [NonPersistentObjectSpace](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.NonPersistentObjectSpace) created for the master object cannot handle linked persistent objects by default. To work with them, create a persistent object space and add it to the [AdditionalObjectSpaces](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.NonPersistentObjectSpace.AdditionalObjectSpaces) collection. Set [NonPersistentObjectSpace\.AutoDisposeAdditionalObjectSpaces](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.NonPersistentObjectSpace.AutoDisposeAdditionalObjectSpaces) to `true` to automatically dispose of additional object spaces when the master is disposed of. 
+2. Set [NonPersistentObjectSpace\.AutoCommitAdditionalObjectSpaces](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.NonPersistentObjectSpace.AutoCommitAdditionalObjectSpaces) to `true` to automatically commit changes made to linked persistent objects.
+3. Set [NonPersistentObjectSpace\.AutoRefreshAdditionalObjectSpaces](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.NonPersistentObjectSpace.AutoRefreshAdditionalObjectSpaces) to `true` and subscribe to the [ObjectGetting](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.NonPersistentObjectSpace.ObjectGetting) event, to refresh linked persistent objects when the non-persistent object view is refreshed. In the event handler, create a new instance of the non-persistent object and get fresh copies of linked persistent objects.
+4. This example uses the `Category` property to filter the nested list view of persistent objects. To avoid  the object space modification when this property is changed, subscribe to the [BaseObjectSpace.ModifiedChanging](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.BaseObjectSpace.ModifiedChanging) event and set the `e.Cancel` parameter to `true` depending on other event arguments.
 
 ## Files to Review
 
@@ -27,7 +24,6 @@ The Category property in this example is used to filter the nested list view of 
 ## Documentation
 
 - [Non-Persistent Objects](https://docs.devexpress.com/eXpressAppFramework/116516/business-model-design-orm/non-persistent-objects)
-
 
 ## More Examples
 
