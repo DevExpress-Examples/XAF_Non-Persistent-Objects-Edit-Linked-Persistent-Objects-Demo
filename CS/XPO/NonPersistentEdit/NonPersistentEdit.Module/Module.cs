@@ -41,9 +41,8 @@ public sealed class NonPersistentEditModule : ModuleBase {
     private void Application_ObjectSpaceCreated(object sender, ObjectSpaceCreatedEventArgs e) {
         var npos = e.ObjectSpace as NonPersistentObjectSpace;
         if(npos != null) {
-            if(!npos.AdditionalObjectSpaces.Any(os => os.IsKnownType(typeof(BaseObject)))) {
-                IObjectSpace persistentObjectSpace = Application.CreateObjectSpace(typeof(BaseObject));
-                npos.AdditionalObjectSpaces.Add(persistentObjectSpace);
+            if(!(npos.Owner is CompositeObjectSpace)) {
+                npos.PopulateAdditionalObjectSpaces((XafApplication)sender);
             }
             npos.AutoDisposeAdditionalObjectSpaces = true;
             npos.AutoRefreshAdditionalObjectSpaces = true;
