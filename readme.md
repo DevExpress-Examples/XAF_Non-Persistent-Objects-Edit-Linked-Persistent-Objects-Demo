@@ -2,6 +2,7 @@
 ![](https://img.shields.io/endpoint?url=https://codecentral.devexpress.com/api/v1/VersionRange/262842523/20.1.4%2B)
 [![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T888962)
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
+[![](https://img.shields.io/badge/💬_Leave_Feedback-feecdd?style=flat-square)](#does-this-example-address-your-development-requirementsobjectives)
 <!-- default badges end -->
 *Files to look at*:
 
@@ -25,3 +26,10 @@ To automatically commit changes made to linked persistent objects, set [NonPersi
 To refresh linked persistent objects when the non-persistent object view is refreshed, set [NonPersistentObjectSpace\.AutoRefreshAdditionalObjectSpaces](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.NonPersistentObjectSpace.AutoRefreshAdditionalObjectSpaces) to *true* and subscribe to the [ObjectGetting](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.NonPersistentObjectSpace.ObjectGetting) event. In the event handler, create a new non-persistent object instance and get fresh copies of linked persistent objects.
 
 The Category property in this example is used to filter the nested list view of persistent objects. To avoid modifying the object space when this property is changed, subscribe to the [BaseObjectSpace.ModifiedChanging](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.BaseObjectSpace.ModifiedChanging) event and set the *e.Cancel* parameter to *true* depending on other event arguments.
+<!-- feedback -->
+## Does this example address your development requirements/objectives?
+
+[<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=XAF_Non-Persistent-Objects-Edit-Linked-Persistent-Objects-Demo&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=XAF_Non-Persistent-Objects-Edit-Linked-Persistent-Objects-Demo&~~~was_helpful=no)
+
+(you will be redirected to DevExpress.com to submit your response)
+<!-- feedback end -->
