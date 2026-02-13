@@ -27,7 +27,7 @@ To refresh linked persistent objects when the non-persistent object view is refr
 
 The Category property in this example is used to filter the nested list view of persistent objects. To avoid modifying the object space when this property is changed, subscribe to the [BaseObjectSpace.ModifiedChanging](https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.BaseObjectSpace.ModifiedChanging) event and set the *e.Cancel* parameter to *true* depending on other event arguments.
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=XAF_Non-Persistent-Objects-Edit-Linked-Persistent-Objects-Demo&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=XAF_Non-Persistent-Objects-Edit-Linked-Persistent-Objects-Demo&~~~was_helpful=no)
 
