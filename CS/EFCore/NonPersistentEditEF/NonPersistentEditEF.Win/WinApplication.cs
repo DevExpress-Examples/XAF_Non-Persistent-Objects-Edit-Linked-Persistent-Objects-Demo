@@ -18,7 +18,6 @@ public class NonPersistentEditEFWindowsFormsApplication : WinApplication {
 		SplashScreen = new DXSplashScreen(typeof(XafSplashScreen), new DefaultOverlayFormOptions());
         ApplicationName = "NonPersistentEditEF";
         CheckCompatibilityType = DevExpress.ExpressApp.CheckCompatibilityType.DatabaseSchema;
-        UseOldTemplates = false;
         DatabaseVersionMismatch += NonPersistentEditEFWindowsFormsApplication_DatabaseVersionMismatch;
         CustomizeLanguagesList += NonPersistentEditEFWindowsFormsApplication_CustomizeLanguagesList;
     }
